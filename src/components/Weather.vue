@@ -10,7 +10,7 @@
             temp: {{temp}} <span>&#176;</span>
         </p>
         <form v-on:submit.prevent="getWeatherData">
-            <h3><span>도시</span>를 입력하세요</h3>
+            <h3><span>도시</span>를 입력하세요.</h3>
             <input type="text" placeholder="도시이름" v-model="city">
         </form>
     </div>
@@ -32,8 +32,6 @@ export default {
     methods: {
         getWeatherData(){
             if(this.city.trim('')){
-                console.log('test')
-            }else{
                 axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=3dac89683696dfd7505b5b0b64a5143e&units=metric`)
                     .then((result) => {
                             let data = result.data;
@@ -53,9 +51,9 @@ export default {
                     .catch((error) => {
                         console.log(error)
                     });
+            }else{
+                alert('도시를 입력해주세요.')
             }
-
-            
         }
     },
 }
